@@ -32,6 +32,20 @@ try {
 
 const ELEVENLABS_MODEL = 'eleven_multilingual_v2'
 
+// Curated DnD narrator voices — one is randomly chosen per session/playthrough.
+// A page reload picks a fresh narrator.
+const DND_NARRATOR_VOICES = [
+  'oR4uRy4fHDUGGISL0Rev',  // primary voice (user's pick)
+  'pNInz6obpgDQGcFmaJgB',  // Adam    — dominant, deep male
+  'nPczCjzI2devNBz1zQrb',  // Brian   — deep, resonant storyteller
+  'JBFqnCBsd6RMkjVDRZzb',  // Bill    — authoritative narrator
+  'nJvj5shg2xu1GKGxqfkE',  // Yusuf   — smooth, professional narrator
+  'N2lVS1w4EtoT3dr4eOWO',  // Callum  — intense, dramatic
+]
+
+const ELEVENLABS_VOICE_ID =
+  DND_NARRATOR_VOICES[Math.floor(Math.random() * DND_NARRATOR_VOICES.length)]
+
 const ELEVENLABS_VOICE_SETTINGS = {
   stability:        0.65,   // higher stability for long narration passages
   similarity_boost: 0.80,
