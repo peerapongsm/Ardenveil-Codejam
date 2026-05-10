@@ -16,3 +16,23 @@ _site/
 # counterproductive to check this file into the repository.
 # Details at https://github.com/github/pages-gem/issues/768
 Gemfile.lock
+
+node_modules/
+src/config.js
+dist/
+build/
+.env
+.env.local
+.env.*.local
+coverage/
+*.local
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.cache/
+.turbo/
+
