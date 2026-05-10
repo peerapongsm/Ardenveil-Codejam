@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:        # allows manual trigger from Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment runs at a time; queued runs wait, not cancel.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Inject credentials from GitHub Secrets into a fresh config.js.
+      # The file is gitignored so it never enters the repo — only the
+      # deployed artifact contains it. Defaults to empty string (Web
+      # Speech API fallback) if secrets are not configured.
+      - name: Generate src/config.js from secrets
+        env:
+          EL_API_KEY:  ${{ secrets.ELEVENLABS_API_KEY }}
+          EL_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+        run: |
+          API_KEY="${EL_API_KEY:-}"
+          VOICE_ID="${EL_VOICE_ID:-JBFqnCBsd6RMkjVDRZzb}"
+          printf 'export const ELEVENLABS_API_KEY  = "%s"\nexport const ELEVENLABS_VOICE_ID = "%s"\n' \
+            "$API_KEY" "$VOICE_ID" > src/config.js
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
