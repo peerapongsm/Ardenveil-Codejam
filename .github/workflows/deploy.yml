@@ -26,19 +26,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Inject credentials from GitHub Secrets into a fresh config.js.
+      # Inject the API key from GitHub Secrets into a fresh config.js.
       # The file is gitignored so it never enters the repo — only the
       # deployed artifact contains it. Defaults to empty string (Web
-      # Speech API fallback) if secrets are not configured.
+      # Speech API fallback) if the secret is not configured.
+      # Voice IDs are now hardcoded in ttsService.js (no longer a secret).
       - name: Generate src/config.js from secrets
         env:
-          EL_API_KEY:  ${{ secrets.ELEVENLABS_API_KEY }}
-          EL_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          EL_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
         run: |
-          API_KEY="${EL_API_KEY:-}"
-          VOICE_ID="${EL_VOICE_ID:-JBFqnCBsd6RMkjVDRZzb}"
-          printf 'export const ELEVENLABS_API_KEY  = "%s"\nexport const ELEVENLABS_VOICE_ID = "%s"\n' \
-            "$API_KEY" "$VOICE_ID" > src/config.js
+          printf 'export const ELEVENLABS_API_KEY = "%s"\n' \
+            "${EL_API_KEY:-}" > src/config.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
