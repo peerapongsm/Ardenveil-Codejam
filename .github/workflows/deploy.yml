@@ -32,13 +32,10 @@ jobs:
       # Speech API fallback) if secrets are not configured.
       - name: Generate src/config.js from secrets
         env:
-          EL_API_KEY:  ${{ secrets.ELEVENLABS_API_KEY }}
-          EL_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          EL_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
         run: |
           API_KEY="${EL_API_KEY:-}"
-          VOICE_ID="${EL_VOICE_ID:-JBFqnCBsd6RMkjVDRZzb}"
-          printf 'export const ELEVENLABS_API_KEY  = "%s"\nexport const ELEVENLABS_VOICE_ID = "%s"\n' \
-            "$API_KEY" "$VOICE_ID" > src/config.js
+          printf 'export const ELEVENLABS_API_KEY = "%s"\n' "$API_KEY" > src/config.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
