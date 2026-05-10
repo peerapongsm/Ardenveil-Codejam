@@ -1,0 +1,22 @@
+.banner {
+  background: linear-gradient(to right, rgba(212,171,45,0.1), transparent);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.55rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.location {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+.right { display: flex; align-items: center; gap: 0.6rem; }
+.icon { font-size: 1.3rem; }
+@media (max-width: 520px) {
+  .banner { padding: 0.45rem 0.85rem; }
+  .location { font-size: 0.6rem; }
+}

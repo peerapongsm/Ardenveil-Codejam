@@ -1,0 +1,26 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(212,171,45,0.08);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.65rem;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all var(--transition-fast);
+  min-height: 32px;
+  min-width: 72px;
+  justify-content: center;
+}
+.btn:hover { color: var(--color-gold); border-color: var(--color-gold-dark); background: rgba(212,171,45,0.14); }
+.btn--speaking {
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+  animation: speakPulse 1.4s ease-in-out infinite;
+}
+.icon { font-size: 0.75rem; line-height: 1; }

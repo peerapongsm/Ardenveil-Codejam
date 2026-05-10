@@ -1,0 +1,51 @@
+.box {
+  background: var(--color-crimson-muted);
+  border: 1px solid rgba(192,57,43,0.45);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+.enemy {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--color-danger);
+  margin-bottom: 0.4rem;
+}
+.desc { font-size: 0.9rem; color: var(--color-text-muted); font-style: italic; margin-bottom: var(--space-md); }
+.diceRow { display: flex; justify-content: center; align-items: center; gap: 1.2rem; margin-bottom: var(--space-md); flex-wrap: wrap; }
+.die {
+  width: 60px; height: 60px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--color-gold);
+  transition: all var(--transition-base);
+  user-select: none;
+}
+.die--rolling { animation: diceRoll 0.5s ease infinite; }
+.op { font-size: 1.4rem; color: var(--color-text-dim); }
+.total { font-family: var(--font-display); font-size: 2.1rem; color: var(--color-white); min-width: 2ch; }
+.result { font-size: 1.05rem; color: var(--color-white); margin-bottom: var(--space-md); min-height: 1.5em; }
+.result--success { color: var(--color-success); }
+.result--fail    { color: var(--color-danger); }
+.rollBtn {
+  background: var(--color-crimson);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+  min-height: 44px;
+}
+.rollBtn:hover:not(:disabled) { background: #a93226; transform: translateY(-1px); }
+.rollBtn:disabled { opacity: 0.5; cursor: default; }
+@media (max-width: 520px) { .die { width: 48px; height: 48px; font-size: 1.5rem; } .total { font-size: 1.7rem; } }
