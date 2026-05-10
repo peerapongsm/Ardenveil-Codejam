@@ -18,7 +18,7 @@ export function SceneCard() {
 
   return React.createElement(
     'div',
-    { className: 'card', role: 'main', 'aria-label': 'Scene: ' + scene.title },
+    { className: 'card', 'aria-label': 'Scene: ' + scene.title },
     React.createElement(LocationBanner, { location: scene.loc, icon: scene.icon, scene }),
     React.createElement(
       'div',

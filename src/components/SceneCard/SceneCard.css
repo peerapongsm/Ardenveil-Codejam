@@ -9,6 +9,7 @@
   box-shadow: var(--shadow-card);
   animation: fadeInUp 0.4s ease both;
   flex: 1;
+  cursor: default;
 }
 .body { padding: 2rem 2.4rem; }
 
