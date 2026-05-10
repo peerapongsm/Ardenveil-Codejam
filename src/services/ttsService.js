@@ -43,16 +43,6 @@ const DND_NARRATOR_VOICES = [
   'N2lVS1w4EtoT3dr4eOWO',  // Callum  — intense, dramatic
 ]
 
-const ELEVENLABS_VOICE_ID =
-  DND_NARRATOR_VOICES[Math.floor(Math.random() * DND_NARRATOR_VOICES.length)]
-
-const ELEVENLABS_VOICE_SETTINGS = {
-  stability:        0.65,   // higher stability for long narration passages
-  similarity_boost: 0.80,
-  style:            0.35,   // slight expressiveness for dramatic moments
-  use_speaker_boost: true,
-}
-
 // ─── Web Speech voice selection ──────────────────────────────────────────────
 
 /**
