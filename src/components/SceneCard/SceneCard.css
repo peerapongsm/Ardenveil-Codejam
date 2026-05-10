@@ -1,0 +1,72 @@
+.card {
+  width: 100%;
+  max-width: var(--max-content);
+  background: rgba(13,17,23,0.97);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-card);
+  animation: fadeInUp 0.4s ease both;
+  flex: 1;
+}
+.body { padding: 2rem 2.4rem; }
+
+/* Scene art block — ASCII art header per scene */
+.scene-header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+.art {
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--color-gold-dark);
+  opacity: 0.82;
+  white-space: pre;
+  user-select: none;
+  text-align: left;
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.03em;
+}
+.image {
+  text-align: center;
+  font-size: 3.5rem;
+  animation: pulse 4s ease-in-out infinite;
+  user-select: none;
+}
+
+/* Title */
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3.5vw, 1.95rem);
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+  line-height: 1.25;
+}
+
+/* Scene prose */
+.text { margin-bottom: var(--space-xl); }
+.text p {
+  font-size: 1.15rem;
+  line-height: 2.05;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.01em;
+}
+.text p em  { font-style: italic; color: var(--color-text-muted); }
+.text p strong { font-weight: 600; color: var(--color-white); }
+.text p:last-child { margin-bottom: 0; }
+
+@media (max-width: 768px) {
+  .body { padding: 1.5rem 1.3rem; }
+  .image { font-size: 2.8rem; }
+  .art { font-size: 0.68rem; }
+}
+@media (max-width: 520px) {
+  .body { padding: 1.2rem 1rem; }
+  .image { font-size: 2.4rem; }
+  .art { font-size: 0.62rem; }
+  .text p { font-size: 1.08rem; }
+}

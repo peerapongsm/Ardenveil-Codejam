@@ -1,0 +1,32 @@
+{
+  "name": "ardenveil-codejam",
+  "version": "1.0.0",
+  "description": "Ardenveil - A text adventure game with choice-driven story, combat system, and text-to-speech narration",
+  "author": "peerapongsm",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "homepage": "https://peerapongsm.github.io/Ardenveil-Codejam/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peerapongsm/Ardenveil-Codejam.git"
+  },
+  "scripts": {
+    "dev": "serve -l 3000 -s .",
+    "build": "echo 'No build step required - uses browser-native ES modules'",
+    "preview": "serve -l 3000 -s .",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "vitest": "^1.0.0",
+    "serve": "^14.0.0"
+  },
+  "keywords": [
+    "text-adventure",
+    "game",
+    "story",
+    "choice",
+    "react",
+    "tts"
+  ]
+}

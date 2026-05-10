@@ -19,6 +19,7 @@ Gemfile.lock
 
 node_modules/
 src/config.js
+package-minimal.json
 dist/
 build/
 .env
@@ -35,4 +36,6 @@ Thumbs.db
 *~
 .cache/
 .turbo/
-
+.claude/
+.git
+.github
