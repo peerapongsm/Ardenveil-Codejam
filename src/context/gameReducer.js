@@ -23,6 +23,7 @@ import { SPECIES } from '../data/species.js'
 /**
  * @typedef {Object} GameState
  * @property {string}       scene
+ * @property {string}       startScene  – the scene this quest begins from (used by RESET)
  * @property {string|null}  species
  * @property {string}       speciesName
  * @property {number}       hp
@@ -38,6 +39,7 @@ import { SPECIES } from '../data/species.js'
 /** @type {GameState} */
 export const INITIAL_STATE = {
   scene: 'title',
+  startScene: 'title',
   species: null,
   speciesName: '',
   hp: 5,
@@ -128,8 +130,23 @@ export function gameReducer(state, action) {
       })
     }
 
-    case 'RESET':
-      return INITIAL_STATE
+    case 'RESET': {
+      // Reset to initial values but preserve the quest's start scene
+      const sc = action.startScene ?? INITIAL_STATE.scene
+      return { ...INITIAL_STATE, scene: sc, startScene: sc }
+    }
+
+    case 'LOAD_SAVE': {
+      // Hydrate state from a persisted save; keep startScene from action
+      const loaded = action.savedState ?? {}
+      return {
+        ...INITIAL_STATE,
+        ...loaded,
+        startScene: action.startScene ?? loaded.startScene ?? INITIAL_STATE.startScene,
+        notifications: [],   // never restore transient notifications
+        combat: null,        // never restore mid-combat state
+      }
+    }
 
     default:
       return state

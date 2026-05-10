@@ -57,6 +57,7 @@ species_select: {
     '<em>Choose your heritage. It will matter.</em>',
   ],
   speciesSelect: true,
+  speciesNext: 'intro_ottari',
   choices: [],
 },
 

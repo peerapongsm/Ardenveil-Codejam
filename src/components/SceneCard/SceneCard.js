@@ -1,6 +1,5 @@
 import React from 'react'
 import { useGameContext } from '../../context/GameContext.js'
-import { SCENES } from '../../data/scenes.js'
 import { sanitizeHtml } from '../../utils/sanitize.js'
 import { LocationBanner } from '../LocationBanner/LocationBanner.js'
 import { ChoiceList } from '../ChoiceList/ChoiceList.js'
@@ -9,8 +8,8 @@ import { SpeciesSelect } from '../SpeciesSelect/SpeciesSelect.js'
 import { EndingCard } from '../EndingCard/EndingCard.js'
 
 export function SceneCard() {
-  const { state, goTo } = useGameContext()
-  const scene = SCENES[state.scene]
+  const { state, goTo, scenes } = useGameContext()
+  const scene = scenes[state.scene]
   if (!scene) return null
 
   const showCombat = scene.combat && (!state.combat || !state.combat.done)

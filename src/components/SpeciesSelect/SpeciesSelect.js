@@ -3,12 +3,17 @@ import { useGameContext } from '../../context/GameContext.js'
 import { SPECIES } from '../../data/species.js'
 
 export function SpeciesSelect() {
-  const { dispatch, goTo } = useGameContext()
+  const { state, dispatch, goTo, scenes } = useGameContext()
 
   const choose = (key) => {
+    // Read the next scene from the current scene definition so this component
+    // works for any quest, not just the original Chromatic Seal.
+    const currentScene = scenes[state.scene]
+    const nextScene = currentScene?.speciesNext ?? 'intro_ottari'
+
     dispatch({ type: 'CHOOSE_SPECIES', speciesKey: key })
     dispatch({ type: 'ADD_NOTIFICATION', message: 'You are ' + SPECIES[key].name + '. ' + SPECIES[key].trait + ' active.' })
-    goTo('intro_ottari')
+    goTo(nextScene)
   }
 
   return React.createElement(
